@@ -5,8 +5,8 @@
   "author": "nptay1999 <nptay1999@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "rm -rf node_modules/.cache && cross-env APP_ENV=development NODE_ENV=development ENV_BUILD=development webpack serve",
-    "build": "rm -rf node_modules/.cache && cross-env APP_ENV=production NODE_ENV=production ENV_BUILD=production webpack --env production"
+    "dev": "rm -rf node_modules/.cache && cross-env NODE_ENV=development webpack serve",
+    "build": "rm -rf node_modules/.cache && cross-env NODE_ENV=production webpack --env production"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
@@ -27,7 +27,7 @@
     "@typescript-eslint/parser": "^5.47.1",
     "autoprefixer": "^10.4.19",
     "copy-webpack-plugin": "^12.0.2",
-    "css-loader": "^7.1.1",
+    "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^7.0.0",
     "cssnano": "^7.0.1",
     "dotenv": "^16.4.5",

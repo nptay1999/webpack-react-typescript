@@ -16,7 +16,7 @@ const StylelintPlugin = require('stylelint-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 
 // Load .env file variables
-require('dotenv').config({ path: `.env.${process.env.APP_ENV}` })
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 
 const PATHS = parts.PATHS
 
@@ -51,7 +51,7 @@ const commonConfig = merge([
       new Dotenv({
         systemvars: true,
         allowEmptyValues: true,
-        path: `.env.${process.env.APP_ENV}`,
+        path: `.env.${process.env.NODE_ENV}`,
       }),
       new StylelintPlugin({
         extensions: ['css', 'scss', 'sass', 'less'],
@@ -68,7 +68,7 @@ const commonConfig = merge([
         cache: true,
         context: PATHS.appSrc,
         lintDirtyModulesOnly: true,
-        failOnError: process.env.ENV_BUILD === 'development',
+        failOnError: process.env.NODE_ENV === 'development',
         cacheLocation: path.resolve(
           PATHS.appNodeModules,
           '.cache/.eslintcache'
@@ -188,6 +188,6 @@ module.exports = () => {
     },
   }
 
-  const currentEnv = options[process.env.ENV_BUILD]
+  const currentEnv = options[process.env.NODE_ENV]
   return merge(...currentEnv.configs)
 }
