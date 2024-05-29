@@ -9,6 +9,7 @@
     "build": "rm -rf node_modules/.cache && cross-env NODE_ENV=production webpack --env production"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.40.0",
     "axios": "^1.7.2",
     "cross-env": "^7.0.3",
     "lodash": "^4.17.21",
