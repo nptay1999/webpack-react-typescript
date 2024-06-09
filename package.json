@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "rm -rf node_modules/.cache && cross-env NODE_ENV=development webpack serve",
-    "build": "rm -rf node_modules/.cache && cross-env NODE_ENV=production webpack --env production"
+    "build": "rm -rf node_modules/.cache && cross-env NODE_ENV=production webpack --env production",
+    "lint-fix": "eslint \"{src,apps,libs}/**/*.{ts,tsx,json}\" --fix",
+    "lint": "eslint \"{src,apps,libs}/**/*.{ts,tsx,json}\""
   },
   "dependencies": {
     "@tanstack/react-query": "^5.40.0",
