@@ -8,7 +8,9 @@
     "dev": "rm -rf node_modules/.cache && cross-env NODE_ENV=development webpack serve",
     "build": "rm -rf node_modules/.cache && cross-env NODE_ENV=production webpack --env production",
     "lint-fix": "eslint \"{src,apps,libs}/**/*.{ts,tsx,json}\" --fix",
-    "lint": "eslint \"{src,apps,libs}/**/*.{ts,tsx,json}\""
+    "lint": "eslint \"{src,apps,libs}/**/*.{ts,tsx,json}\"",
+    "prepare": "husky install",
+    "format": "prettier --write 'src/**/*.{js,ts,tsx}'"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.40.0",
@@ -23,6 +25,8 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.13",
     "@svgr/webpack": "^8.1.0",
     "@swc/cli": "^0.3.12",
@@ -51,9 +55,11 @@
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "html-webpack-plugin": "^5.6.0",
+    "husky": "^9.0.11",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
     "less-plugin-clean-css": "^1.5.1",
+    "lint-staged": "^15.2.7",
     "mini-css-extract-plugin": "^2.9.0",
     "postcss": "^8.4.38",
     "postcss-less": "^6.0.0",
@@ -82,5 +88,14 @@
     "webpack-merge": "^5.10.0",
     "webpackbar": "^5.0.2",
     "workbox-webpack-plugin": "^7.1.0"
+  },
+  "lint-staged": {
+    "*.{js,json,ts,graphql,tsx,jsx}": [
+      "prettier --write",
+      "yarn lint-fix"
+    ],
+    "*.{css,scss,sass,less}": [
+      "stylelint \"**/*.{css,scss,sass,less}\" --fix"
+    ]
   }
 }
